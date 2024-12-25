@@ -9,9 +9,7 @@ from typing import List
 import re
 from huggingface_hub import login
 
-# Log in with your Hugging Face token
-login("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")
-DATASET_REVISION = "8a4cb75204eb3d5855a81778db6b95bfc80c9136"
+
 
 # def clean_sample(sample):
 #     """Removes 'import org.javatuples.*;' and specific example comments from the code."""
@@ -118,7 +116,7 @@ def make_main(args, model_name, gen_completions):
             "json", data_files=args.dataset, split="train")
     else:
         problems = datasets.load_dataset(
-            "Dataset678", f"{args.root_dataset}-{args.lang}", revision=DATASET_REVISION, split="test"
+            "Dataset678/humaneval-java" ,split="test"
         )
 
     start_index = args.input_start_index if args.input_start_index is not None else 0
